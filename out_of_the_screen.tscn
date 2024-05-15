@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckdtqrs7y3app"]
+
+[ext_resource type="Script" path="res://Level/Out_Of_The_Screen.gd" id="1_pykmv"]
+[ext_resource type="Material" uid="uid://cgosd3wa2w2dr" path="res://ShipRedMaterial.tres" id="2_uy32t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o7rxa"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7rlk5"]
+points = PackedVector3Array(1.5, 1.5, 1.5, 1.5, 1.5, -1.5, -1.5, 1.5, 1.5, 1.5, -1.5, 1.5, 1.5, -1.5, -1.5, -1.5, 1.5, -1.5, -1.5, -1.5, 1.5, -1.5, -1.5, -1.5)
+
+[node name="Out_Of_The_Screen" type="AnimatableBody3D" groups=["Hazard"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.03197, 0, 0)
+script = ExtResource("1_pykmv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84175, 0)
+material_override = ExtResource("2_uy32t")
+mesh = SubResource("BoxMesh_o7rxa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.84175, 0)
+shape = SubResource("ConvexPolygonShape3D_7rlk5")
